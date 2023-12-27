@@ -61,7 +61,7 @@ router.get("/post/:id", async (req, res) => {
 router.get('/newpost',(req,res)=>{
   res.render('newpost.ejs')
 })
-// 
+// Now 
 const handleError = (res, error, message = "Default Error Message !") => {
   console.error(error);
   let data = message;
