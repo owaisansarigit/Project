@@ -1,4 +1,46 @@
 <%- layout('layout/boilerplate.ejs') %>
-<div>
-  <input type="text" name="" id="">
+<div class="bg-transparent p-6">
+  <div class="max-w-lg mx-auto bg-gray-100 rounded-lg p-8 shadow-md">
+    <h2 class="text-2xl font-semibold mb-6">Create New Post</h2>
+    <!-- Post Form -->
+    <form action="/newpost" method="post">
+      <!-- Post Title -->
+      <div class="mb-4">
+        <label for="title" class="block text-gray-600 text-sm font-medium mb-2"
+          >Post Title</label
+        >
+        <input
+          id="title"
+          name="title"
+          type="text"
+          class="block w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        />
+      </div>
+      <!-- Post Content -->
+      <div class="mb-6">
+        <label
+          for="content"
+          class="block text-gray-600 text-sm font-medium mb-2"
+          >Post Content</label
+        >
+        <textarea
+          id="content"
+          name="content"
+          rows="2"
+          class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        ></textarea>
+      </div>
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-800 focus:outline-none focus:bg-blue-600"
+      >
+        Create Post
+      </button>
+    </form>
+    <!-- Cancel Link -->
+    <p class="mt-4 text-sm text-gray-600">
+      Cancel and go back to <a href="/" class="text-blue-500">home</a>.
+    </p>
+  </div>
 </div>

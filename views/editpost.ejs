@@ -1,0 +1,45 @@
+<%- layout('layout/boilerplate.ejs') %>
+<form
+  action="/post/edit/<%= data.id %>?_method=PUT"
+  method="post"
+  class="max-w-md mx-auto p-6 rounded-md shadow-md max-w-lg mx-auto bg-gray-100 rounded-lg p-8 shadow-md"
+  novalidate
+>
+  <p class="text-xl font-semibold mb-4">Edit Post</p>
+
+  <div class="mb-4">
+    <label for="title" class="block text-gray-700 text-sm font-bold mb-2"
+      >Title:</label
+    >
+    <input
+      type="text"
+      id="title"
+      name="title"
+      value="<%= data.title %>"
+      class="w-full border border-gray-300 p-2 rounded-md"
+      required
+    />
+  </div>
+
+  <div class="mb-4">
+    <label for="content" class="block text-gray-700 text-sm font-bold mb-2"
+      >Content:</label
+    >
+    <textarea
+      id="content"
+      name="content"
+      class="w-full border border-gray-300 p-2 rounded-md"
+      rows="4"
+      required
+    >
+<%= data.content %></textarea
+    >
+  </div>
+
+  <button
+    type="submit"
+    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+  >
+    Save Changes
+  </button>
+</form>

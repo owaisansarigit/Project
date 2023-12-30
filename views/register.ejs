@@ -1,6 +1,6 @@
 <%- layout('layout/boilerplate.ejs') %>
 
-<form class="max-w-md mx-auto">
+<form action="/register" method="post" class="max-w-md mx-auto">
   <div class="relative z-0 w-full mb-5 group">
     <input
       type="text"
@@ -63,7 +63,7 @@
   </div>
   <div class="flex justify-between items-center pr-5">
     <button
-      type="button"
+      type="submit"
       class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring- focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
     >
       Register
