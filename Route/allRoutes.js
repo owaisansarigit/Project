@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../Models/Users");
 const passport = require("passport");
 const Post = require("../Models/Post");
+const Comments = require("../Models/comments");
 const isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
@@ -62,7 +63,21 @@ router.get("/logout", (req, res) => {
 
 // Blog related routes
 router.get("/post/:id", async (req, res) => {
-  res.render("showpost.ejs");
+  try {
+    let data = await Post.findById(req.params.id)
+      .populate("user")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+        },
+      });
+
+    res.render("showpost.ejs", { data });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 router.get("/newpost", isLoggedIn, (req, res) => {
@@ -120,6 +135,39 @@ router.delete("/post/:id", isLoggedIn, async (req, res) => {
     }
   } catch (e) {
     console.log(e);
+  }
+});
+
+router.post("/post/comment/:id", isLoggedIn, async (req, res) => {
+  try {
+    let newcomment = await Comments.create(req.body);
+    let post = await Post.findById(req.params.id);
+    newcomment.user = req.user.id;
+    newcomment.post = req.params.id;
+    post.comments.push(newcomment.id);
+    await newcomment.save();
+    await post.save();
+    req.flash("success", "comment added");
+    res.redirect(`/post/${req.params.id}`);
+  } catch (e) {
+    console.log(e);
+    req.flash("error", "comment not added");
+    res.redirect(`/post/${req.params.id}`);
+  }
+});
+router.delete("/post/:id/delete/:comid", isLoggedIn, async (req, res) => {
+  let post = await Post.findById(req.params.id);
+  let comment = await Comments.findById(req.params.comid);
+  if (req.user.id == comment.user) {
+    post.comments.pull(comment.id);
+    post.save();
+    req.flash("success", "Deleted");
+    await Comments.findByIdAndDelete(req.params.comid);
+    res.redirect(`/post/${req.params.id}`);
+  }
+  if (req.user.id != comment.user) {
+    req.flash("error", "Not Deleted");
+    res.redirect(`/post/${req.params.id}`);
   }
 });
 
