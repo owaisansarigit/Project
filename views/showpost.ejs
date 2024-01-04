@@ -38,11 +38,13 @@
     </div>
   </div>
   <div class="w-1/2 flex justify-center">
-    <div class="parent-for-comment mt-3 border-transperent w-full rounded-md p-5">
+    <div
+      class="parent-for-comment mt-3 border-transperent w-full rounded-md p-5"
+    >
       <form
         action="/post/comment/<%= data.id %>"
         method="post"
-        class="max-w-md ms-8 "
+        class="max-w-md ms-8"
       >
         <textarea
           id="message"
@@ -74,7 +76,7 @@
                 ><%= comdata.user.name %></span
               >
               <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
-                >11:46</span
+                ><strong><%= comdata.user.username %></strong></span
               >
             </div>
             <div

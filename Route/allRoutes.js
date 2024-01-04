@@ -10,7 +10,6 @@ const isLoggedIn = (req, res, next) => {
   }
   res.redirect("/login");
 };
-
 router.get("/", async (req, res) => {
   let data = await Post.find();
   res.render("home.ejs", { data });
@@ -60,7 +59,6 @@ router.get("/logout", (req, res) => {
     res.redirect("/");
   });
 });
-
 // Blog related routes
 router.get("/post/:id", async (req, res) => {
   try {
@@ -97,12 +95,10 @@ router.post("/newpost", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
 router.get("/my-profile", isLoggedIn, async (req, res) => {
   let data = await User.findById(req.user.id).populate("posts");
   res.render("myprofile.ejs", { data });
 });
-
 router.get("/post/edit/:id", isLoggedIn, async (req, res) => {
   let data = await Post.findById(req.params.id);
   res.render("editpost.ejs", { data });
@@ -118,7 +114,6 @@ router.put("/post/edit/:id", async (req, res) => {
     res.redirect("/my-profile");
   }
 });
-
 router.delete("/post/:id", isLoggedIn, async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
@@ -137,7 +132,6 @@ router.delete("/post/:id", isLoggedIn, async (req, res) => {
     console.log(e);
   }
 });
-
 router.post("/post/comment/:id", isLoggedIn, async (req, res) => {
   try {
     let newcomment = await Comments.create(req.body);
@@ -170,5 +164,8 @@ router.delete("/post/:id/delete/:comid", isLoggedIn, async (req, res) => {
     res.redirect(`/post/${req.params.id}`);
   }
 });
-
+router.get("/user/search", async (req, res) => {
+  let data = [1, 2, 3, 4];
+  res.render("searchUser.ejs", { data });
+});
 module.exports = router;
