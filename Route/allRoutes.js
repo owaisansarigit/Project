@@ -165,7 +165,11 @@ router.delete("/post/:id/delete/:comid", isLoggedIn, async (req, res) => {
   }
 });
 router.get("/user/search", async (req, res) => {
-  let data = [1, 2, 3, 4];
+  let data = await User.find();
   res.render("searchUser.ejs", { data });
+});
+router.get("/user/:id", async (req, res) => {
+  let data = await User.findById(req.params.id).populate('posts');
+  res.render("showUser.ejs", { data });
 });
 module.exports = router;
