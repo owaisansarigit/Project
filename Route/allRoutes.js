@@ -169,7 +169,7 @@ router.get("/user/search", async (req, res) => {
   res.render("searchUser.ejs", { data });
 });
 router.get("/user/:id", async (req, res) => {
-  let data = await User.findById(req.params.id).populate('posts');
+  let data = await User.findById(req.params.id).populate("posts");
   res.render("showUser.ejs", { data });
 });
 module.exports = router;

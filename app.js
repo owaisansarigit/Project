@@ -13,7 +13,9 @@ const User = require("./Models/Users");
 
 {
   async function main() {
-    const MONGO_URL = "mongodb://127.0.0.1:27017/Login";
+    const MONGO_URL =
+      "mongodb+srv://filledstackdeveloper:8HXGRTz6xjNP3zwD@lodgify.shrzebr.mongodb.net/";
+
     await mongoose.connect(MONGO_URL);
   }
   main()
@@ -21,7 +23,7 @@ const User = require("./Models/Users");
       console.log("Connected to DB");
     })
     .catch((err) => {
-      console.log(err);
+      console.log("error");
     });
   app.set("view engine", "ejs");
   app.use(express.static(__dirname + "/Public"));
