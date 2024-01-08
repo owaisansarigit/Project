@@ -12,6 +12,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./Models/Users");
 const { URL } = require("url");
 const punycode = require("punycode");
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 require("dotenv").config();
 {
@@ -36,12 +37,16 @@ require("dotenv").config();
     console.log("Server Started !");
   });
 }
-
+const store = new MongoDBStore({
+  uri: "mongodb://localhost:27017/yourdatabase",
+  collection: "sessions",
+});
 app.use(
   session({
     secret: "mySecret",
     resave: false,
     saveUninitialized: true,
+    store: store,
   })
 );
 app.use(flash());
