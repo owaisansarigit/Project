@@ -10,12 +10,10 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./Models/Users");
-
+require("dotenv").config();
 {
   async function main() {
-    const MONGO_URL =
-      "mongodb+srv://filledstackdeveloper:8HXGRTz6xjNP3zwD@lodgify.shrzebr.mongodb.net/";
-
+    const MONGO_URL = process.env.DB_URL;
     await mongoose.connect(MONGO_URL);
   }
   main()
