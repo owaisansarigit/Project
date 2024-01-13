@@ -83,8 +83,7 @@
               class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700"
             >
               <p class="text-sm font-normal text-gray-900 dark:text-white">
-                That's awesome. I think our users will really appreciate the
-                improvements.
+                <%= comdata.comment %>
               </p>
             </div>
           </div>
@@ -117,13 +116,6 @@
               class="py-2 text-sm text-gray-700 dark:text-gray-200"
               aria-labelledby="dropdownMenuIconButton"
             >
-              <li>
-                <a
-                  href="#"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Reply</a
-                >
-              </li>
               <li>
                 <% if(currUser.id == comdata.user.id){ %>
                 <form

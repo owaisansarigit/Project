@@ -1,35 +1,40 @@
 <%- layout('layout/boilerplate.ejs') %>
-<body>
-  <div class="w-full flex flex-wrap gap-2 justify-center">
+<body class="bg-gray-100 dark:bg-gray-900">
+  <div class="w-full flex flex-wrap gap-4 justify-center p-4">
     <% for(data of data){ %>
 
     <a
       href="/post/<%= data.id%>"
-      class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      class="w-full block max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
     >
       <h3
-        class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white"
+        class="w-full mb-2 text-lg font-semibold text-gray-800 dark:text-white"
       >
-        Noteworthy technology acquisitions 2021
+        <%= data.title %>
       </h3>
-      <p class="font-normal text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far,
-        in reverse chronological order.
-      </p>
-      <div class="flex items-center justify-between px-8">
-        <span class="mt-2 pointer" style="cursor: pointer"
-          ><i class="fa-regular fa-heart"></i
-        ></span>
-        <span class="mt-2 pointer" style="cursor: pointer"
-          ><%= data.comments.length%>&nbsp;&nbsp;<i class="fa-regular fa-comment"></i
-        ></span>
-        <span class="mt-2 pointer" style="cursor: pointer"
-          ><i class="fa-solid fa-share"></i
-        ></span>
+      <p class="text-gray-600 dark:text-gray-400"><%= data.content %></p>
+      <div class="flex items-center justify-between mt-4">
+        <span
+          class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
+        >
+          <i class="fa-regular fa-heart mr-1"></i>
+          Like
+        </span>
+        <span
+          class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
+        >
+          <i class="fa-regular fa-comment mr-1"></i>
+          <%= data.comments.length %>&nbsp;&nbsp;Comments
+        </span>
+        <span
+          class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
+        >
+          <i class="fa-solid fa-share mr-1"></i>
+          Share
+        </span>
       </div>
     </a>
 
-    <br />
     <% } %>
   </div>
 </body>

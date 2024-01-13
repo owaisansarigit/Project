@@ -1,6 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-transperent nav"></nav>
-
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-white border-gray-200 dark:bg-gray-900 shadow-md">
   <div
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
   >
@@ -13,9 +11,12 @@
     <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <% if(currUser){ %>
       <div class="flex items-center">
-        <a href="/my-profile"
-          ><i class="fa-regular fa-address-card"></i>&nbsp;Profile</a
+        <a
+          href="/my-profile"
+          class="text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500"
         >
+          <i class="fa-regular fa-address-card"></i>&nbsp;Profile
+        </a>
       </div>
       <% } %>
       <button
@@ -54,47 +55,51 @@
           <a
             href="/"
             class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            ><i class="fa-solid fa-house"></i> Home</a
           >
+            <i class="fa-solid fa-house"></i> Home
+          </a>
         </li>
         <li>
           <a
             href="/newpost"
             class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            ><i class="fa-regular fa-square-plus"></i>&nbsp;Add Post</a
           >
+            <i class="fa-regular fa-square-plus"></i>&nbsp;Add Post
+          </a>
         </li>
         <li>
           <a
             href="/user/search"
             class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            ><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search</a
           >
+            <i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search
+          </a>
         </li>
         <% if(!currUser){ %>
         <li>
           <a
             href="/login"
             class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            ><i class="fa-solid fa-lock"></i>&nbsp;Login</a
           >
+            <i class="fa-solid fa-lock"></i>&nbsp;Login
+          </a>
         </li>
         <li>
           <a
             href="/register"
             class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            ><i class="fa-solid fa-user-plus"></i>&nbsp;Register</a
           >
+            <i class="fa-solid fa-user-plus"></i>&nbsp;Register
+          </a>
         </li>
         <% } %> <% if(currUser){ %>
-
         <li>
           <a
             href="/logout"
             class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            ><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;
-            Logout</a
           >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Logout
+          </a>
         </li>
         <% } %>
       </ul>
