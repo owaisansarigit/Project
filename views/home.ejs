@@ -5,33 +5,43 @@
 
     <a
       href="/post/<%= data.id%>"
-      class="w-full block max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      class="w-full block max-w-md p-0 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
     >
-      <h3
-        class="w-full mb-2 text-lg font-semibold text-gray-800 dark:text-white"
-      >
-        <%= data.title %>
-      </h3>
-      <p class="text-gray-600 dark:text-gray-400"><%= data.content %></p>
-      <div class="flex items-center justify-between mt-4">
-        <span
-          class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
+      <img
+        class="rounded-t-lg w-full"
+        src="https://flowbite.com/docs/images/blog/image-1.jpg"
+        alt=""
+      />
+      <div class="p-6">
+        <h3
+          class="w-full mb-2 text-lg font-semibold text-gray-800 dark:text-white"
         >
-          <i class="fa-regular fa-heart mr-1"></i>
-          Like
-        </span>
-        <span
-          class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
-        >
-          <i class="fa-regular fa-comment mr-1"></i>
-          <%= data.comments.length %>&nbsp;&nbsp;Comments
-        </span>
-        <span
-          class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
-        >
-          <i class="fa-solid fa-share mr-1"></i>
-          Share
-        </span>
+          <%= data.title %>
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-8"><%= data.content %></p>
+        <p class="mb-8"></p>
+        <div class="absolute bottom-5 mt-6 w-full">
+          <div class="w-full flex items-center justify-around mt-6 gap-8">
+            <span
+              class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
+            >
+              <i class="fa-regular fa-heart mr-1"></i>
+              Like
+            </span>
+            <span
+              class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
+            >
+              <i class="fa-regular fa-comment mr-1"></i>
+              <%= data.comments.length %>&nbsp;&nbsp;Comments
+            </span>
+            <span
+              class="flex items-center text-gray-500 dark:text-gray-300 hover:text-blue-500 transition"
+            >
+              <i class="fa-solid fa-share mr-1"></i>
+              Share
+            </span>
+          </div>
+        </div>
       </div>
     </a>
 

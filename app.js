@@ -10,14 +10,14 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./Models/Users");
-const MongoDBStore = require("connect-mongodb-session")(session);
+// const MongoDBStore = require("connect-mongodb-session")(session);
 require("dotenv").config();
 
 const MONGO_URL = process.env.DB_URL;
 
 async function main() {
   try {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect("mongodb://127.0.0.1:27017/lodgify");
     console.log("Connected to DB");
   } catch (err) {
     console.error("Error connecting to DB:", err);
@@ -33,17 +33,17 @@ app.use(express.urlencoded({ extended: true }));
 app.engine("ejs", ejsMate);
 app.use(methodOverride("_method"));
 
-const store = new MongoDBStore({
-  uri: MONGO_URL,
-  collection: "sessions",
-});
+// const store = new MongoDBStore({
+//   uri: MONGO_URL,
+//   collection: "sessions",
+// });
 
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "your-secret-key",
     resave: false,
     saveUninitialized: true,
-    store: store,
+    // store: store,
   })
 );
 
